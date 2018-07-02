@@ -4,9 +4,15 @@ namespace BinaryStudioAcademy\Game;
 
 use BinaryStudioAcademy\Game\Contracts\Io\Reader;
 use BinaryStudioAcademy\Game\Contracts\Io\Writer;
+use Pimple\Container;
 
 class Game
 {
+    private function bootstrap()
+    {
+
+    }
+
     public function start(Reader $reader, Writer $writer): void
     {
         // TODO: Implement infinite loop and process user's input
