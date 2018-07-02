@@ -16,7 +16,7 @@ Binary Studio Academy PHP 2018
 Установка показана в рабочем окружении OS Linux:
 
 ```bash
-git clone 
+git clone https://pavelnemoi@bitbucket.org/pavelnemoi/bsa-php-2018-4.git
 cd bsa-2018-php-4
 composer install
 ```
