@@ -11,5 +11,5 @@ namespace BinaryStudioAcademy\Game\Contracts\Commands;
 
 interface HandlerInterface
 {
-    public function execute($data):void;
+    public function execute($data = null):void;
 }

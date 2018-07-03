@@ -9,7 +9,7 @@ abstract class AbstractCommand implements CommandInterface
 {
     protected $handler;
     protected $data;
-    public function __construct(HandlerInterface $handler,$data)
+    public function __construct(HandlerInterface $handler,$data = null)
     {
         $this->handler = $handler;
         $this->data = $data;
@@ -18,5 +18,11 @@ abstract class AbstractCommand implements CommandInterface
     public function setData($data):void
     {
         $this->data = $data;
+    }
+
+    //override in child classes for additional logic
+    public function execute(): void
+    {
+        $this->handler->execute($this->data);
     }
 }

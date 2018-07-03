@@ -20,7 +20,7 @@ final class ItemStorage implements Storage
 
     public function getItems(): array
     {
-        return array_keys($this->items);
+        return $this->items;
     }
 
     public function getItem(string $item): Item
