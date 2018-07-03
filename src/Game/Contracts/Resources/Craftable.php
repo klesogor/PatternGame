@@ -7,9 +7,11 @@ use BinaryStudioAcademy\Game\Contracts\Storage;
 
 interface Craftable
 {
-    public function craft(Storage $storage):string ;
+    public function craft():string;
 
     public function getSchema():CraftingSchema;
 
     public function maxCapacityReached():bool;
+
+    public function getComponentList():string;
 }

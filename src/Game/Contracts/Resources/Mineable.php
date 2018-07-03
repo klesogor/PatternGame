@@ -4,5 +4,5 @@ namespace BinaryStudioAcademy\Game\Contracts\Resources;
 
 interface Mineable
 {
-    public function mine():void;
+    public function mine():string ;
 }

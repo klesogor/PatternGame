@@ -5,7 +5,6 @@ namespace BinaryStudioAcademy\Game\Items;
 
 use BinaryStudioAcademy\CraftingSchemas\CraftingSchema;
 use BinaryStudioAcademy\Game\Contracts\Resources\Craftable;
-use BinaryStudioAcademy\Game\Contracts\Storage;
 
 class CraftableResources extends BasicItem implements Craftable
 {
@@ -13,34 +12,43 @@ class CraftableResources extends BasicItem implements Craftable
     protected $maxAmount = 10;
     protected $schema;
 
-    public function __construct($name, $quantity,CraftingSchema $schema)
+    public function __construct($name, $quantity,$storage,CraftingSchema $schema)
     {
-        parent::__construct($name, $quantity);
+        parent::__construct($name, $quantity,$storage);
         $this->schema = $schema;
     }
 
-    public function craft(Storage $storage): string
+    public function craft(): string
     {
-        $failed = $this->schema->isSatisfiedBy($storage);
+        $failed = $this->schema->isSatisfiedBy($this->storage);
         if($this->maxCapacityReached()) {
             return "Attention! {$this->name} is ready!";
         } else if(!empty($failed)) {
-            return $this->fieldsFailRender(array_keys($failed));
+            return $this->componentList(array_keys($failed));
         } else {
             foreach($this->schema->getComponents() as $component=>$value){
-                $storage->getItem($component)->use($value);
+                $this->storage->getItem($component)->use($value);
             }
             $this->quantity += $this->craftAmount;
         }
     }
 
-    protected function fieldsFailRender(array $failedFields)
+    protected function componentList(array $failedFields)
     {
         $lowerCase = array_map(function($item){
             return strtolower($item);
         },$failedFields);
         $message = implode(',',$lowerCase);
         return "You need to mine: {$message}.";
+    }
+
+    public function getComponentList(): string
+    {
+        $failed = $this->schema->isSatisfiedBy($this->storage);
+        if(!empty($failed))
+            return $this->componentList(array_keys($failed));
+        else
+            return "You can produce {$this->name}";
     }
 
     public function maxCapacityReached(): bool

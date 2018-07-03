@@ -10,13 +10,15 @@ namespace BinaryStudioAcademy\Game\Items;
 
 
 use BinaryStudioAcademy\Game\Contracts\Resources\Item;
+use BinaryStudioAcademy\Game\Contracts\Storage;
 
 abstract class BasicItem  implements Item
 {
     protected $name;
     protected  $quantity;
+    protected $storage;
 
-    public function __construct(string $name,number $quantity)
+    public function __construct(string $name,number $quantity,Storage $storage)
     {
         $this->name = $name;
         $this->quantity = $quantity;

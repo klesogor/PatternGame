@@ -1,32 +1,20 @@
 <?php
 require 'game_resources.php';
-$container = new \Pimple\Container();
 $storage = new \BinaryStudioAcademy\Game\Utility\ItemStorage();
+$factory = new \BinaryStudioAcademy\Game\Factories\BasicResourceFactory($storage);
 
 foreach($basicResources as $basicResource){
-    $storage->addItem(new \BinaryStudioAcademy\Game\Items\BasicResource($basicResource['name'],$basicResource['quantity']));
+    $storage->addItem($factory->make('basic',$basicResource));
 }
 
 foreach($craftableResource as $resource){
-    $storage->addItem(new \BinaryStudioAcademy\Game\Items\CraftableResources(
-        $resource['name'],
-        $resource['quantity'],
-        new \BinaryStudioAcademy\CraftingSchemas\CraftingSchema($resource['components'])
-    ));
+    $storage->addItem($factory->make('produceable',$resource));
 }
 
 foreach($spaceshipParts as $resource){
-    $storage->addItem(new \BinaryStudioAcademy\Game\Items\SpaceshipPart(
-        $resource['name'],
-        $resource['quantity'],
-        new \BinaryStudioAcademy\CraftingSchemas\CraftingSchema($resource['components'])
-    ));
+    $storage->addItem($factory->make('part',$resource));
 }
 
 foreach($finalParts as $resource){
-    $storage->addItem(new \BinaryStudioAcademy\Game\Items\FinalSpaceshipPart(
-        $resource['name'],
-        $resource['quantity'],
-        new \BinaryStudioAcademy\CraftingSchemas\CraftingSchema($resource['components'])
-    ));
+    $storage->addItem($factory->make('final_part',$resource));
 }

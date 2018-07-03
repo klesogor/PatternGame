@@ -8,8 +8,9 @@ class BasicResource extends BasicItem implements Mineable
 {
     protected $mineQuantity = 1;
 
-    public function mine():void
+    public function mine():string
     {
         $this->quantity += $this->mineQuantity;
+        return "Added {$this->getName()} to inventory.";
     }
 }

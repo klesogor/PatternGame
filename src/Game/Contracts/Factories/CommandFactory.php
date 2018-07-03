@@ -6,5 +6,5 @@ use BinaryStudioAcademy\Game\Contracts\Commands\CommandInterface;
 
 interface CommandFactory
 {
-    public function make(string $commandName):CommandInterface;
+    public function make(string $type,$data):CommandInterface;
 }

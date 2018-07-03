@@ -11,19 +11,21 @@ final class ItemStorage implements Storage
 
     public function addItem(Item $item): void
     {
-        if(!arrayHasKey($item->getName()))
-            $this->items[$item->getName()] = $item;
+        $name = strtolower($item->getName());
+        if(!arrayHasKey($name))
+            $this->items[$name] = $item;
         else
             throw new \Exception('Item already exists!');
     }
 
     public function getItems(): array
     {
-        return $this->items;
+        return array_keys($this->items);
     }
 
     public function getItem(string $item): Item
     {
+        $item = strtolower($item);
         if(isset($this->items[$item]))
             return $this->items[$item];
         throw new \Exception('Unknown item!');
