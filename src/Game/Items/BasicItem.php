@@ -13,8 +13,11 @@ use BinaryStudioAcademy\Game\Contracts\Resources\Item;
 
 abstract class BasicItem  implements Item
 {
-    protected $quantity = 0;
-    protected $name = 'Name stub. Implement unique name!';
+    public function __construct(string $name,number $quantity)
+    {
+        $this->name = $name;
+        $this->quantity = $quantity;
+    }
 
     public function use(number $quantity):void
     {
