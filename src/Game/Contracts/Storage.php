@@ -12,6 +12,4 @@ interface Storage
 
     public function getItem(string $item):Item;
 
-    public function validateHasItem(string $name,$quantity):bool;
-
 }
