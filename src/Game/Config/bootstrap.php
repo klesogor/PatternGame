@@ -18,3 +18,5 @@ foreach($spaceshipParts as $resource){
 foreach($finalParts as $resource){
     $storage->addItem($factory->make('final_part',$resource));
 }
+
+$commands = [];

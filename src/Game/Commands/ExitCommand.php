@@ -11,8 +11,4 @@ namespace BinaryStudioAcademy\Game\Commands;
 
 class ExitCommand extends AbstractCommand
 {
-    public function execute(): void
-    {
-        die('See you later...');
-    }
 }

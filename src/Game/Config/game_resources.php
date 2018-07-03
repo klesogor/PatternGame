@@ -51,3 +51,9 @@ $finalParts = [
         'components' => ['Metal'=>1,'Fuel'=>1],
     ],
 ];
+
+//commands
+$possible_commands = [
+    'scheme' => ['command' => 'scheme',
+        'handler'=>new \BinaryStudioAcademy\Game\Commands\Handlers\SchemeHandler()],
+];

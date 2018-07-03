@@ -9,7 +9,6 @@ use BinaryStudioAcademy\Game\Contracts\Factories\CommandFactory;
 
 final class BasicCommandFactory implements CommandFactory
 {
-    //private $types = ['mine','produce','help','build','scheme','status','exit'];
     private $knownCommands;
     private $resources;
 
