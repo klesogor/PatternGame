@@ -2,8 +2,7 @@
 
 namespace BinaryStudioAcademy\Game\Contracts\Resources;
 
-use BinaryStudioAcademy\CraftingSchemas\CraftingSchema;
-use BinaryStudioAcademy\Game\Contracts\Storage;
+use BinaryStudioAcademy\Game\CraftingSchemas\CraftingSchema;
 
 interface Craftable
 {

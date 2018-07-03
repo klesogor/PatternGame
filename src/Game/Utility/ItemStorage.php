@@ -12,7 +12,7 @@ final class ItemStorage implements Storage
     public function addItem(Item $item): void
     {
         $name = strtolower($item->getName());
-        if(!arrayHasKey($name))
+        if(!in_array($name,array_keys($this->items)))
             $this->items[$name] = $item;
         else
             throw new \Exception('Item already exists!');

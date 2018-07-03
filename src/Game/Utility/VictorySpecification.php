@@ -22,5 +22,6 @@ class VictorySpecification implements StorageSpecificationInterface
         foreach($storage->getItems() as $item)
             if($item instanceof FinalPart && $item->getQuantity<1)
                 $failed[] = $item;
+        return $failed;
     }
 }

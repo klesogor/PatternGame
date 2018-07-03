@@ -6,7 +6,7 @@ interface Item
 {
     public function getName():string;
 
-    public function use(number $quantity):void;
+    public function use(int $quantity):void;
 
-    public function getQuantity():number;
+    public function getQuantity():int;
 }

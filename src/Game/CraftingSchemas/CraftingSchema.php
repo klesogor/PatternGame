@@ -1,6 +1,6 @@
 <?php
 
-namespace BinaryStudioAcademy\CraftingSchemas;
+namespace BinaryStudioAcademy\Game\CraftingSchemas;
 
 use BinaryStudioAcademy\Game\Contracts\Specifications\StorageSpecificationInterface;
 use BinaryStudioAcademy\Game\Contracts\Storage;

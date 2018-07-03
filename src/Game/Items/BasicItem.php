@@ -18,26 +18,29 @@ abstract class BasicItem  implements Item
     protected  $quantity;
     protected $storage;
 
-    public function __construct(string $name,number $quantity,Storage $storage)
+    public function __construct(string $name,int $quantity,Storage $storage)
     {
         $this->name = $name;
         $this->quantity = $quantity;
+        $this->storage = $storage;
     }
 
-    public function use(number $quantity):void
-    {
-        if($this->quantity < $quantity)
-            throw new \Exception('Not enough raw materials');
-        $this->quantity -= $quantity;
-    }
+
 
     public function getName(): string
     {
         return $this->name;
     }
 
-    public function getQuantity(): number
+    public function getQuantity(): int
     {
         return $this->quantity;
+    }
+
+    public function use (int $quantity): void
+    {
+        if($this->quantity < $quantity)
+            throw new \Exception('Not enough raw materials');
+        $this->quantity -= $quantity;
     }
 }

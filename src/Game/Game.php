@@ -2,31 +2,46 @@
 
 namespace BinaryStudioAcademy\Game;
 
+use BinaryStudioAcademy\Game\Config\Config;
 use BinaryStudioAcademy\Game\Contracts\Io\Reader;
 use BinaryStudioAcademy\Game\Contracts\Io\Writer;
-use Pimple\Container;
+use BinaryStudioAcademy\Game\Factories\BasicCommandFactory;
+use BinaryStudioAcademy\Game\Utility\ConcreteStorageProxy;
+use BinaryStudioAcademy\Game\Utility\VictorySpecification;
 
 class Game
 {
-    private function bootstrap()
+    private $storage;
+    private $storageProxy;
+    private $commandFactory;
+    private $victory;
+
+    public function __construct()
     {
+        $config = new Config();
+        $this->victory = new VictorySpecification();
+        $this->storage = $config->getStorage();
+        $this->storageProxy = new ConcreteStorageProxy($this->storage,$this->victory);
+        $this->commandFactory = new BasicCommandFactory($config->getCommands(),
+            array_keys($this->storage->getItems()),$this->storageProxy);
 
     }
 
     public function start(Reader $reader, Writer $writer): void
     {
-        // TODO: Implement infinite loop and process user's input
-        // Feel free to delete these lines
-        $writer->writeln("You can't play yet. Please read input and convert it to commands.");
-        $writer->writeln("Don't forget to create game's world.");
-        $writer->write("Type your name:");
-        $input = trim($reader->read());
-        $writer->writeln("Good luck with this task, {$input}!");
+        $this->storageProxy->setWriter($writer);
+        while(!empty($this->victory->isSatisfiedBy($this->storage)))
+        {
+            $input = trim($reader->read());
+            try{
+                $this->commandFactory->make($input)->execute();
+            }catch (\Exception $exception){$writer->writeln("Unknown command {$input}");}
+        }
     }
 
     public function run(Reader $reader, Writer $writer): void
     {
-        // TODO: Implement step by step mode with game state persistence between steps
+
         $writer->writeln("You can't play yet. Please read input and convert it to commands.");
         $writer->writeln("Don't forget to create game's world.");
     }

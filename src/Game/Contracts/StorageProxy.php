@@ -3,6 +3,8 @@
 namespace BinaryStudioAcademy\Game\Contracts;
 
 //This is kinda proxe, but not really. It uses same idea though.
+use BinaryStudioAcademy\Game\Contracts\Io\Writer;
+
 interface StorageProxy
 {
     public function build($name):void;
@@ -18,4 +20,6 @@ interface StorageProxy
     public function produce($name):void;
 
     public function status():void;
+
+    public function setWriter(Writer $writer):void;
 }

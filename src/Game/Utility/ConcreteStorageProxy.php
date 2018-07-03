@@ -17,10 +17,9 @@ final class ConcreteStorageProxy implements StorageProxy
     private $writer;
     private $victory;
 
-    public function __construct(Storage $storage,Writer $writer,StorageSpecificationInterface $victory)
+    public function __construct(Storage $storage,StorageSpecificationInterface $victory)
     {
         $this->storage = $storage;
-        $this->writer = $writer;
         $this->victory = $victory;
     }
 
@@ -94,5 +93,10 @@ final class ConcreteStorageProxy implements StorageProxy
     public function status(): void
     {
        $this->writer->write(':::STATUS:::');
+    }
+
+    public function setWriter(Writer $writer): void
+    {
+        $this->writer = $writer;
     }
 }

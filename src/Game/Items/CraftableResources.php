@@ -3,8 +3,8 @@
 namespace BinaryStudioAcademy\Game\Items;
 
 
-use BinaryStudioAcademy\CraftingSchemas\CraftingSchema;
 use BinaryStudioAcademy\Game\Contracts\Resources\Craftable;
+use BinaryStudioAcademy\Game\CraftingSchemas\CraftingSchema;
 
 class CraftableResources extends BasicItem implements Craftable
 {

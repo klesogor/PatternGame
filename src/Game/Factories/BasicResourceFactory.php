@@ -3,7 +3,7 @@
 namespace BinaryStudioAcademy\Game\Factories;
 
 
-use BinaryStudioAcademy\CraftingSchemas\CraftingSchema;
+use BinaryStudioAcademy\Game\CraftingSchemas\CraftingSchema;
 use BinaryStudioAcademy\Game\Contracts\Factories\ResourceFactory;
 use BinaryStudioAcademy\Game\Contracts\Resources\Item;
 use BinaryStudioAcademy\Game\Contracts\Storage;
@@ -25,7 +25,7 @@ final class BasicResourceFactory implements ResourceFactory
     {
         if(!in_array($type,$this->types))
             throw new \Exception('incorrect type');
-        return call_user_func_array(array($this,$type),$parameters);
+        return call_user_func_array(array($this,$type),[$parameters]);
     }
 
     public function basic(array $params)
