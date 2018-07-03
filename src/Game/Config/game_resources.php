@@ -54,6 +54,10 @@ $finalParts = [
 
 //commands
 $possible_commands = [
-    'scheme' => ['command' => 'scheme',
-        'handler'=>new \BinaryStudioAcademy\Game\Commands\Handlers\SchemeHandler()],
+    'scheme' => \BinaryStudioAcademy\Game\Commands\ShemeCommand::class,
+    'help' => \BinaryStudioAcademy\Game\Commands\HelpCommand::class,
+    'build' => \BinaryStudioAcademy\Game\Commands\BuildCommand::class,
+    'produce' => \BinaryStudioAcademy\Game\Commands\ProduceCommand::class,
+    'mine' => \BinaryStudioAcademy\Game\Commands\MineCommand::class,
+    'exit' => \BinaryStudioAcademy\Game\Commands\ExitCommand::class,
 ];

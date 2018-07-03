@@ -3,15 +3,15 @@
 namespace BinaryStudioAcademy\Game\Commands;
 
 use BinaryStudioAcademy\Game\Contracts\Commands\CommandInterface;
-use BinaryStudioAcademy\Game\Contracts\Commands\HandlerInterface;
+use BinaryStudioAcademy\Game\Contracts\StorageProxy;
 
 abstract class AbstractCommand implements CommandInterface
 {
     protected $handler;
     protected $data;
-    public function __construct(HandlerInterface $handler,$data = null)
+    public function __construct(StorageProxy $proxy,$data = null)
     {
-        $this->handler = $handler;
+        $this->handler = $proxy;
         $this->data = $data;
     }
 
@@ -20,9 +20,4 @@ abstract class AbstractCommand implements CommandInterface
         $this->data = $data;
     }
 
-    //override in child classes for additional logic
-    public function execute(): void
-    {
-        $this->handler->execute($this->data);
-    }
 }

@@ -22,7 +22,7 @@ class CraftableResources extends BasicItem implements Craftable
     {
         $failed = $this->schema->isSatisfiedBy($this->storage);
         if($this->maxCapacityReached()) {
-            return "Attention! {$this->name} is ready!";
+            return "Attention! {$this->name} is full!";
         } else if(!empty($failed)) {
             return $this->componentList(array_keys($failed));
         } else {
@@ -30,6 +30,7 @@ class CraftableResources extends BasicItem implements Craftable
                 $this->storage->getItem($component)->use($value);
             }
             $this->quantity += $this->craftAmount;
+            return "{$this->name} added to inventory.";
         }
     }
 

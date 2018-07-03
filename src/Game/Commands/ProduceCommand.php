@@ -3,10 +3,10 @@
 namespace BinaryStudioAcademy\Game\Commands;
 
 
-class BuildCommand extends  AbstractCommand
+class ProduceCommand extends  AbstractCommand
 {
     public function execute(): void
     {
-        $this->handler->build($this->data);
+        $this->handler->produce($this->data);
     }
 }
