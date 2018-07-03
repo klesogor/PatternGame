@@ -13,6 +13,9 @@ use BinaryStudioAcademy\Game\Contracts\Resources\Item;
 
 abstract class BasicItem  implements Item
 {
+    protected $name;
+    protected  $quantity;
+
     public function __construct(string $name,number $quantity)
     {
         $this->name = $name;

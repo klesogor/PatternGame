@@ -5,11 +5,14 @@ namespace BinaryStudioAcademy\CraftingSchemas;
 use BinaryStudioAcademy\Game\Contracts\Specifications\StorageSpecificationInterface;
 use BinaryStudioAcademy\Game\Contracts\Storage;
 
-abstract class CraftingSchema implements StorageSpecificationInterface
+class CraftingSchema implements StorageSpecificationInterface
 {
     protected $components;
 
-    protected $result;
+    function __construct(array  $components)
+    {
+        $this->components = $components;
+    }
 
     public function isSatisfiedBy(Storage $storage): array
     {
@@ -23,11 +26,6 @@ abstract class CraftingSchema implements StorageSpecificationInterface
 
     public function getComponents():array
     {
-        return array_keys($this->components);
-    }
-
-    public function getResult():string
-    {
-        return $this->result;
+        return $this->components;
     }
 }
