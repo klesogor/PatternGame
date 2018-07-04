@@ -6,7 +6,7 @@
  * Time: 11:13
  */
 
-namespace BinaryStudioAcademy\Game\traits;
+namespace BinaryStudioAcademy\Game\Traits;
 
 
 use BinaryStudioAcademy\Game\Contracts\Commands\CommandInterface;

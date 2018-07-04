@@ -1,6 +1,6 @@
 <?php
 
-namespace BinaryStudioAcademy\Game\traits;
+namespace BinaryStudioAcademy\Game\Traits;
 
 
 trait SchemaTrait

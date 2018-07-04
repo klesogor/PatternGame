@@ -20,4 +20,6 @@ interface StorageInterface
     public function get(string  $item): Item;
 
     public function has(string  $item): bool;
+
+    public function getItems():array ;
 }
