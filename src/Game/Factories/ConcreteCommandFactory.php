@@ -26,7 +26,7 @@ class ConcreteCommandFactory extends AbstractCommandFactory
         else if(in_array($command[0],$this->resourceList)) {
             return call_user_func(array($this,'produce'),$command);
         } else{
-            throw new \Exception('Unknown command: '.$command[0]);
+            throw new \Exception('There is no command '.$command[0]);
         }
     }
 }

@@ -45,16 +45,16 @@ final class Config
         ['name' => 'Metal','quantity'=>0, 'components'=> ['Iron'=>1,"Fire"=>1]],
     ];
     private $parts = [
-        ['name' => 'IC','quantity'=>0, 'components'=> ['Metal'=>1,"Silicon"=>1]],
+        ['name' => 'Ic','quantity'=>0, 'components'=> ['Metal'=>1,"Silicon"=>1]],
         ['name' => 'Wires','quantity'=>0, 'components'=> ['Copper'=>1,"Fire"=>1]],
     ];
     private $finalParts = [
         ['name' => 'Tank','quantity'=>0, 'components'=> ['Metal'=>1,"Fuel"=>1]],
         ['name' => 'Launcher','quantity'=>0, 'components'=> ['Water'=>1,"Fire"=>1,"Fuel"=>1]],
-        ['name' => 'Engine','quantity'=>0, 'components'=> ['Metal'=>1,"Fire"=>1,"Carbon"=>1]],
+        ['name' => 'Engine','quantity'=>0, 'components'=> ['Metal'=>1,"Carbon"=>1,"Fire"=>1]],
         ['name' => 'Control_unit','quantity'=>0, 'components'=> ['IC'=>1,"Wires"=>1]],
         ['name' => 'Porthole','quantity'=>0, 'components'=> ['Sand'=>1,"Fire"=>1]],
-        ['name' => 'Shell','quantity'=>0, 'components'=> ['Fire'=>1,"Metal"=>1]],
+        ['name' => 'Shell','quantity'=>0, 'components'=> ["Metal"=>1,'Fire'=>1]],
     ];
 
 }

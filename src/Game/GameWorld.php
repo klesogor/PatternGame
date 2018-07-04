@@ -60,7 +60,7 @@ final class GameWorld implements GameWorldInterface
         if($command instanceof HelpCommand)
             $this->help($command->getData());
         else if($command instanceof ShemeCommand)
-            $this->sheme($command->getData());
+            $this->scheme($command->getData());
         else if($command instanceof BuildCommand)
             $this->build($command->getData());
         else if($command instanceof ProduceCommand)
@@ -78,7 +78,7 @@ final class GameWorld implements GameWorldInterface
             $this->writer->writeln($param);
     }
 
-    private function sheme(array $data)
+    private function scheme(array $data)
     {
         $fail_message = 'There is no such spaceship module.';
         try {
@@ -123,7 +123,7 @@ final class GameWorld implements GameWorldInterface
                 $this->storage->get($key)->use($value);
         }
         else{
-            $this->writer->writeln('You need to mine: '.$this->resources($failed));
+            $this->writer->writeln("You need to mine: {$this->resources($failed)}.");
         }
     }
 
@@ -144,24 +144,24 @@ final class GameWorld implements GameWorldInterface
         $validator = $this->schemeFactory->create($item->getComponentsList());
         $failed = $validator->validate($this->storage);
         if($item->getQuantity()>0) {
-            $this->writer->writeln("Attention! {$item->getName()} is ready!");
+            $this->writer->writeln("Attention! {$item->getName()} is ready.");
         } else if($validator->isValid()) {
             foreach ( $item->getComponentsList() as $key=>$value)
                 $this->storage->get($key)->use($value);
             $message = $item->craft();
             if(empty($this->specification->validate($this->storage)))
-                $message.= ' => You win!';
+                $message.= ' => You won!';
             $this->writer->writeln($message);
         }
         else{
-            $this->writer->writeln('Inventory should have: '.$this->resources($failed));
+            $this->writer->writeln("Inventory should have: {$this->resources($failed)}.");
         }
 
     }
 
     private function mine(array $data)
     {
-        $fail_message = 'There is no such resource';
+        $fail_message = 'No such resource.';
         try {
             $item = $this->storage->get($data[0]);
         }catch (\Exception $exception){

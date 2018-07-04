@@ -14,7 +14,7 @@ use BinaryStudioAcademy\Game\Contracts\Commands\CommandInterface;
 
 trait CommandFactoryTrait
 {
-    protected function sheme(array $name):CommandInterface
+    protected function scheme(array $name):CommandInterface
     {
         $item = new ShemeCommand();
         $item->setData($name);
