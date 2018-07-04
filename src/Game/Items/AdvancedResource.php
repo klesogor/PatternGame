@@ -10,7 +10,7 @@ namespace BinaryStudioAcademy\Game\Items;
 
 
 use BinaryStudioAcademy\Game\Contracts\Items\Produceable;
-use BinaryStudioAcademy\Game\traits\SchemaTrait;
+use BinaryStudioAcademy\Game\Traits\SchemaTrait;
 
 final class AdvancedResource extends Item implements Produceable
 {
