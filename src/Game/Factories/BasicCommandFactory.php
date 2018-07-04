@@ -24,18 +24,19 @@ final class BasicCommandFactory implements CommandFactory
     public function make(string $command): CommandInterface
     {
         $command = explode(':',$command);
-        var_dump($command);
-        if(count($command)===2) {
+        if(count($command)===2 && array_key_exists($command[0],$this->knownCommands)) {
             return new $this->knownCommands[$command[0]] ($this->storage,$command[1]);
         } else if(count($command) === 1){
             if($command[0] === 'help')
                 return new $this->knownCommands['help']($this->storage,array_keys($this->knownCommands));
             else if ($command[0] === 'status')
                 return new $this->knownCommands['status']($this->storage,null);
+            else if (array_key_exists($command[0],$this->knownCommands))
+                return new $this->knownCommands[$command[0]]($this->storage,null);
             else
                 return $this->evalResource($command[0]);
         }
-
+        throw new \Exception("There is no command {$command[0]}");
     }
 
     private function evalResource($resource)

@@ -3,6 +3,8 @@
 namespace BinaryStudioAcademy\Game\Config;
 
 
+use BinaryStudioAcademy\Game\Commands\StatusCommand;
+
 class Config
 {
     public function getStorage()
@@ -88,6 +90,7 @@ class Config
             'produce' => \BinaryStudioAcademy\Game\Commands\ProduceCommand::class,
             'mine' => \BinaryStudioAcademy\Game\Commands\MineCommand::class,
             'exit' => \BinaryStudioAcademy\Game\Commands\ExitCommand::class,
+            'status' =>StatusCommand::class,
         ];
 
 }
