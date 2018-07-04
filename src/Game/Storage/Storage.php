@@ -3,14 +3,14 @@
 namespace BinaryStudioAcademy\Game\Storage;
 
 
+use BinaryStudioAcademy\Game\Contracts\Items\ItemInterface;
 use BinaryStudioAcademy\Game\Contracts\Storage\StorageInterface;
-use BinaryStudioAcademy\Game\Items\Item;
 
 final class Storage implements StorageInterface
 {
     private $container = [];
 
-    public function add(Item $item): void
+    public function add(ItemInterface $item): void
     {
         $name = strtolower($item->getName());
         if(array_key_exists($name,$this->container))
@@ -25,7 +25,7 @@ final class Storage implements StorageInterface
             unset($this->container[$name]);
     }
 
-    public function get(string $item): Item
+    public function get(string $item): ItemInterface
     {
         $name = strtolower($item);
         if(array_key_exists($name,$this->container))
@@ -43,6 +43,6 @@ final class Storage implements StorageInterface
 
     public function getItems(): array
     {
-        return array_keys($this->container);
+        return $this->container;
     }
 }

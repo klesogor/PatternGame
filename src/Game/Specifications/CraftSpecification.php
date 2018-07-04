@@ -3,7 +3,7 @@ namespace BinaryStudioAcademy\Game\Specifications;
 
 use BinaryStudioAcademy\Game\Contracts\Storage\StorageInterface;
 
-class CraftSpecification extends AbstractSpecification
+final class CraftSpecification extends AbstractSpecification
 {
     private $components;
 

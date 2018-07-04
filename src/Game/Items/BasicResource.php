@@ -2,10 +2,9 @@
 
 namespace BinaryStudioAcademy\Game\Items;
 
+use BinaryStudioAcademy\Game\Contracts\Items\MineableInterface;
 
-use BinaryStudioAcademy\Game\Contracts\Items\Mineable;
-
-final class BasicResource extends Item implements Mineable
+final class BasicResource extends Item implements MineableInterface
 {
 
     private $yieldAmount = 1;

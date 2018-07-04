@@ -25,11 +25,24 @@ abstract class AbstractCommand implements CommandInterface
 
     public function setData(array $data): void
     {
-        $this->data = $data;
+        if(!empty($data))
+            $this->data = $data;
+        else
+            $this->data = ['undefined'];
     }
 
     public function getAlias(): string
     {
         return $this->name;
+    }
+
+    public function getData(): array
+    {
+        return $this->data;
+    }
+
+    public function execute(): void
+    {
+        $this->executor->execute($this);
     }
 }

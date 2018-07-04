@@ -12,7 +12,7 @@ namespace BinaryStudioAcademy\Game\Specifications;
 use BinaryStudioAcademy\Game\Contracts\Storage\StorageInterface;
 use BinaryStudioAcademy\Game\Items\FinalSpaceshipPart;
 
-class VictorySpecification extends AbstractSpecification
+final class VictorySpecification extends AbstractSpecification
 {
 
     public function validate(StorageInterface $storage): array

@@ -3,7 +3,7 @@
 namespace BinaryStudioAcademy\Game\Contracts\Items;
 
 
-interface Mineable
+interface MineableInterface
 {
     public function mine():string;
 

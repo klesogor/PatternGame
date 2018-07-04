@@ -14,4 +14,6 @@ interface CommandInterface
     public function execute(): void;
 
     public function getAlias(): string ;
+
+    public function getData(): array;
 }
