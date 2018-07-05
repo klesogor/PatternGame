@@ -9,7 +9,9 @@
 namespace BinaryStudioAcademy\Game\Contracts\Factories;
 
 
+use BinaryStudioAcademy\Game\Contracts\Items\ItemInterface;
+
 interface ItemFactoryInterface
 {
-
+    public function create(string $type,array $parameters):ItemInterface;
 }
