@@ -14,9 +14,8 @@ use BinaryStudioAcademy\Game\Contracts\Registries\ItemsRegistryInterface;
 use BinaryStudioAcademy\Game\Contracts\Storage\StorageInterface;
 use BinaryStudioAcademy\Game\Contracts\VictorySpecificationInterface;
 use BinaryStudioAcademy\Game\GameWorld\GameWorld;
-use BinaryStudioAcademy\Game\Registries\CommandRegistry;
-use BinaryStudioAcademy\Game\Registries\CraftingSchemaRegistry;
-use BinaryStudioAcademy\Game\Registries\CraftingSchemaRegistryInteface;
+
+use BinaryStudioAcademy\Game\Contracts\Registries\CraftingSchemaRegistryInteface;
 
 class GameWorldBuilder
 {

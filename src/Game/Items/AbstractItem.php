@@ -17,6 +17,11 @@ abstract class AbstractItem implements ItemInterface
     private $id;
     protected $info;
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     public function __construct(string $name,int $id, string $info = null)
     {
         $this->name = $name;

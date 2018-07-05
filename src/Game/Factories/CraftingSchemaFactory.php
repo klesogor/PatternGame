@@ -11,13 +11,12 @@ namespace BinaryStudioAcademy\Game\Factories;
 
 use BinaryStudioAcademy\Game\Contracts\CraftingSchemas\CraftingSchemaInterface;
 use BinaryStudioAcademy\Game\Contracts\Factories\CraftSchemeFactoryInterface;
-use BinaryStudioAcademyTests\Game\CraftingSchema\CraftingSchema;
 
 class CraftingSchemaFactory implements CraftSchemeFactoryInterface
 {
 
     public function create(string $alias, array $components): CraftingSchemaInterface
     {
-       return new CraftingSchema($components,$alias);
+       return new \BinaryStudioAcademy\Game\CraftingSchema\CraftingSchema($components,$alias);
     }
 }

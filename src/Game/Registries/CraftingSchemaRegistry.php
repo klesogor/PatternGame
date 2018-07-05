@@ -9,7 +9,9 @@
 namespace BinaryStudioAcademy\Game\Registries;
 
 
+
 use BinaryStudioAcademy\Game\Contracts\CraftingSchemas\CraftingSchemaInterface;
+use BinaryStudioAcademy\Game\Contracts\Registries\CraftingSchemaRegistryInteface;
 use BinaryStudioAcademy\Game\Exceptions\ItemNotFountException;
 
 class CraftingSchemaRegistry implements CraftingSchemaRegistryInteface
@@ -18,7 +20,7 @@ class CraftingSchemaRegistry implements CraftingSchemaRegistryInteface
     private $schemas = [];
     public function addSchema(CraftingSchemaInterface $schema):void
     {
-        $$this->schema[strtolower($schema->getAlias())] = $schema;
+        $this->schemas[strtolower($schema->getAlias())] = $schema;
     }
 
     public function getSchema(string $alias):CraftingSchemaInterface

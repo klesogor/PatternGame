@@ -24,9 +24,9 @@ use BinaryStudioAcademy\Game\Contracts\Storage\StorageInterface;
 use BinaryStudioAcademy\Game\Factories\CraftingSchemaFactory;
 use BinaryStudioAcademy\Game\Registries\CommandRegistry;
 use BinaryStudioAcademy\Game\Registries\CraftingSchemaRegistry;
-use BinaryStudioAcademy\Game\Registries\CraftingSchemaRegistryInteface;
 use BinaryStudioAcademy\Game\Registries\ItemRegistry;
 use BinaryStudioAcademy\Game\Storage\Storage;
+use BinaryStudioAcademy\Game\Contracts\Registries\CraftingSchemaRegistryInteface;
 
 class Config
 {
@@ -69,12 +69,14 @@ class Config
             $registry->addSchema($factory->create($resource['name'],$resource['schema']));
         foreach($this->final_parts as $resource)
             $registry->addSchema($factory->create($resource['name'],$resource['schema']));
+        return $registry;
     }
 
     private $basic = [ //set quantity here probably?
         ['name' => 'Iron'],
         ['name' => 'Copper'],
         ['name' => 'Carbon'],
+        ['name' => 'Silicon'],
         ['name' => 'Sand'],
         ['name' => 'Fire'],
         ['name' => 'Fuel'],
@@ -87,7 +89,7 @@ class Config
 
     private $parts = [
         ['name' => 'Ic','schema' => ['Metal'=>1,'Silicon'=>1]],
-        ['name' => 'Wires','schema' => ['Cooper'=>1,'Fire'=>1]],
+        ['name' => 'Wires','schema' => ['Copper'=>1,'Fire'=>1]],
     ];
 
     private $final_parts = [

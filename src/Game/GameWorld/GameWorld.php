@@ -9,11 +9,13 @@ use BinaryStudioAcademy\Game\Contracts\Items\Craftable;
 use BinaryStudioAcademy\Game\Contracts\Items\Mineable;
 use BinaryStudioAcademy\Game\Contracts\Items\Producable;
 use BinaryStudioAcademy\Game\Contracts\Registries\CommandRegistryInterface;
+use BinaryStudioAcademy\Game\Contracts\Registries\CraftingSchemaRegistryInteface;
 use BinaryStudioAcademy\Game\Contracts\Registries\ItemsRegistryInterface;
 use BinaryStudioAcademy\Game\Contracts\Storage\StorageInterface;
 use BinaryStudioAcademy\Game\Contracts\VictorySpecificationInterface;
 use BinaryStudioAcademy\Game\Exceptions\ItemNotFountException;
-use BinaryStudioAcademy\Game\Registries\CraftingSchemaRegistryInteface;
+use BinaryStudioAcademy\Game\Exceptions\UnknownCommandException;
+
 
 final class GameWorld implements GameWorldInterface
 {
@@ -38,7 +40,7 @@ final class GameWorld implements GameWorldInterface
         $this->victorySpec = $victory;
     }
 
-    public function craft(string $alias): void
+    public function build(string $alias): void
     {
         try {
             $item = $this->itemRegistry->getNewItem($alias);
@@ -46,6 +48,7 @@ final class GameWorld implements GameWorldInterface
                 throw new ItemNotFountException();
             if ($this->storage->itemQuantity($alias) > 0) {
                 $this->writer->writeln("Attention! {$item} is ready.");
+                return;
             }
             $scheme = $this->schemeRegistry->getSchema($alias);
             if ($scheme->canCraft($this->storage)) {
@@ -97,7 +100,7 @@ final class GameWorld implements GameWorldInterface
     {
         try {
             $representation = $this->schemeRegistry->getSchema($alias)->getSchema();
-            $this->writer->write($representation);
+            $this->writer->writeln($representation);
         }catch (ItemNotFountException $exception){
             $this->writer->writeln('There is no such spaceship module.');
         }
@@ -124,13 +127,12 @@ final class GameWorld implements GameWorldInterface
         foreach ($this->storage->getItemsList() as $key=>$value)
         {
             if(array_key_exists($key,$finalParts)) {
-                $ready[] = $value;
+                $ready[] = $finalParts[$key];
                 unset($finalParts[$key]);
             } else {
                 $items[] ="$key - " . count($value);
             }
         }
-
         $this->writer->writeln("You have: ");
         $this->writer->writeln(implode(', ',$items));
         $this->writer->writeln("Spaceship parts ready: ");
@@ -159,13 +161,13 @@ final class GameWorld implements GameWorldInterface
 
     public function process(string $command):void
     {
-        $commandArray = explode(':',$command);
+        $commandArray = explode(':',strtolower($command));
         try{
             $command = $this->commandRegistry->get($commandArray[0]);
             $data = isset($commandArray[1]) ? $commandArray[1] : '';
             $command->setData($data)->setExecutor($this)->execute();
             return;
-        } finally {
+        } catch (UnknownCommandException $exception) {
             try {
                 $item = $this->itemRegistry->getNewItem($commandArray[0]);
                 if(!$item instanceof Producable)

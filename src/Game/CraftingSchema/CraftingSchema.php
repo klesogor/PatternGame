@@ -1,6 +1,6 @@
 <?php
 
-namespace BinaryStudioAcademyTests\Game\CraftingSchema;
+namespace BinaryStudioAcademy\Game\CraftingSchema;
 
 use BinaryStudioAcademy\Game\Contracts\CraftingSchemas\CraftingSchemaInterface;
 use BinaryStudioAcademy\Game\Contracts\Storage\StorageInterface;
@@ -47,7 +47,7 @@ class CraftingSchema implements CraftingSchemaInterface
 
     public function getSchema(): string
     {
-        $components = implode('|',$this->components);
+        $components = implode('|',array_keys($this->components));
         return "{$this->alias} => {$components}";
     }
 

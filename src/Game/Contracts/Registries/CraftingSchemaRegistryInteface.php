@@ -6,7 +6,7 @@
  * Time: 13:04
  */
 
-namespace BinaryStudioAcademy\Game\Registries;
+namespace BinaryStudioAcademy\Game\Contracts\Registries;
 
 
 use BinaryStudioAcademy\Game\Contracts\CraftingSchemas\CraftingSchemaInterface;

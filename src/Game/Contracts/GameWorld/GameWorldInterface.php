@@ -13,7 +13,7 @@ use BinaryStudioAcademy\Game\Contracts\Io\Writer;
 
 interface GameWorldInterface
 {
-    public function craft(string $alias):void;
+    public function build(string $alias):void;
 
     public function produce(string $alias):void;
 
