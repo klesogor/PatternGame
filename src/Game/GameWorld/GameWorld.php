@@ -66,7 +66,7 @@ final class GameWorld implements GameWorldInterface
             } else {
                 $message = 'Inventory should have: ';
                 $message .= implode(',', $this->arrayToLowerCase($scheme->missingResources()));
-                $this->writer->writeln($message);
+                $this->writer->writeln($message.'.');
             }
         }catch (ItemNotFountException $exception){
             $this->writer->writeln('There is no such spaceship module.');
@@ -85,11 +85,11 @@ final class GameWorld implements GameWorldInterface
                     $this->storage->takeItem($component, $amount);
 
                 $this->storage->addItem($item);
-                $this->writer->writeln("{$item->getName()} added to your inventory!");
+                $this->writer->writeln("{$item->getName()} added to inventory.");
             } else {
-                $message = 'You should mine: ';
+                $message = 'You need to mine: ';
                 $message .= implode(',', $this->arrayToLowerCase($scheme->missingResources()));
-                $this->writer->writeln($message);
+                $this->writer->writeln($message.'.');
             }
         }catch (ItemNotFountException $exception){
             $this->writer->writeln('There is no such resource.');
@@ -113,9 +113,9 @@ final class GameWorld implements GameWorldInterface
             if(!$item instanceof Mineable)
                 throw new ItemNotFountException();
             $this->storage->addItem($this->itemRegistry->getNewItem($alias));
-            $this->writer->writeln("{$item->getName()} added to your inventory!");
+            $this->writer->writeln("{$item->getName()} added to inventory.");
         }catch (ItemNotFountException $exception){
-            $this->writer->writeln('There is no such resource.');
+            $this->writer->writeln('No such resource.');
         }
     }
 
@@ -175,7 +175,7 @@ final class GameWorld implements GameWorldInterface
                 $command = $this->commandRegistry->get('produce');
                 $command->setData($commandArray[0])->setExecutor($this)->execute();
             } catch (ItemNotFountException $exception){
-                $this->writer->writeln("Unknown command {$commandArray[0]}");
+                $this->writer->writeln("There is no command {$commandArray[0]}");
             }
         }
     }

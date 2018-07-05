@@ -47,7 +47,8 @@ class CraftingSchema implements CraftingSchemaInterface
 
     public function getSchema(): string
     {
-        $components = implode('|',array_keys($this->components));
+        $keys = array_map(function($item){return strtolower($item);},array_keys($this->components));
+        $components = implode('|',$keys);
         return "{$this->alias} => {$components}";
     }
 
