@@ -2,20 +2,40 @@
 
 namespace BinaryStudioAcademy\Game;
 
+use BinaryStudioAcademy\Game\Config\Config;
+use BinaryStudioAcademy\Game\Config\GameWorldBuilder;
 use BinaryStudioAcademy\Game\Contracts\Io\Reader;
 use BinaryStudioAcademy\Game\Contracts\Io\Writer;
+use BinaryStudioAcademy\Game\Factories\CraftingSchemaFactory;
+use BinaryStudioAcademy\Game\Factories\ItemFactory;
 
 class Game
 {
+    private $gameWorld;
+    public function __construct()
+    {
+        $config = new Config();
+        $builder = new GameWorldBuilder();
+        $items = $config->getItemRegistry(new ItemFactory());
+        $commands =$config->getCommandRegistry();
+        $crafts = $config->getSchemaRegistry(new CraftingSchemaFactory());
+        $storage = $config->getStorage();
+        $victory = new VictorySpecification($items->getFinalParts());
+        $this->gameWorld = $builder->setItems($items)
+            ->setCommands($commands)
+            ->setCrafts($crafts)
+            ->setStorage($storage)
+            ->setVictory($victory)
+            ->build();
+
+    }
+
     public function start(Reader $reader, Writer $writer): void
     {
-        // TODO: Implement infinite loop and process user's input
-        // Feel free to delete these lines
-        $writer->writeln("You can't play yet. Please read input and convert it to commands.");
-        $writer->writeln("Don't forget to create game's world.");
-        $writer->write("Type your name:");
-        $input = trim($reader->read());
-        $writer->writeln("Good luck with this task, {$input}!");
+        $this->gameWorld->setWriter($writer);
+        while(true) {
+            $this->gameWorld->process(trim($reader->read()));
+        }
     }
 
     public function run(Reader $reader, Writer $writer): void
