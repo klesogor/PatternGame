@@ -20,4 +20,6 @@ interface CraftingSchemaInterface
     public function getAlias():string;
 
     public function getSchema():string ;
+
+    public function getComponents(): array;
 }

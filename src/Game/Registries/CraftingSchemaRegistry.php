@@ -16,12 +16,12 @@ class CraftingSchemaRegistry implements CraftingSchemaRegistryInteface
 {
 
     private $schemas = [];
-    public function addSchema(CraftingSchemaInterface $schema)
+    public function addSchema(CraftingSchemaInterface $schema):void
     {
         $$this->schema[strtolower($schema->getAlias())] = $schema;
     }
 
-    public function getSchema(string $alias)
+    public function getSchema(string $alias):CraftingSchemaInterface
     {
         if(!array_key_exists(strtolower($alias),$this->schemas)){
             throw new ItemNotFountException($alias);

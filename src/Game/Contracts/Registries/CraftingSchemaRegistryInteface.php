@@ -13,7 +13,7 @@ use BinaryStudioAcademy\Game\Contracts\CraftingSchemas\CraftingSchemaInterface;
 
 interface CraftingSchemaRegistryInteface
 {
-    public function addSchema(CraftingSchemaInterface $schema);
+    public function addSchema(CraftingSchemaInterface $schema):void;
 
-    public function getSchema(string $alias);
+    public function getSchema(string $alias): CraftingSchemaInterface;
 }

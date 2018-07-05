@@ -12,6 +12,7 @@ namespace BinaryStudioAcademy\Game\Registries;
 use BinaryStudioAcademy\Game\Contracts\Items\ItemInterface;
 use BinaryStudioAcademy\Game\Contracts\Registries\ItemsRegistryInterface;
 use BinaryStudioAcademy\Game\Exceptions\ItemNotFountException;
+use BinaryStudioAcademy\Game\Items\FinalSpaceshipPart;
 
 class ItemRegistry implements ItemsRegistryInterface
 {
@@ -34,7 +35,8 @@ class ItemRegistry implements ItemsRegistryInterface
     {
         $finals = [];
         foreach ($this->items as $key=>$value)
-            $finals[] = $value;
+            if($value instanceof FinalSpaceshipPart)
+                $finals[$key] = $value;
         return $finals;
     }
 }

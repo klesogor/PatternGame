@@ -23,7 +23,13 @@ interface GameWorldInterface
 
     public function status():void;
 
-    public function process(string $command);
+    public function help():void;
 
-    public function setWriter(Writer $writer);
+    public function info(string $alias):void;
+
+    public function process(string $command):void;
+
+    public function setWriter(Writer $writer):void;
+
+    public function setMode(string $mode):void;
 }
