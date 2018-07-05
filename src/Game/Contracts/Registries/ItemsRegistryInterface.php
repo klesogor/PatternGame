@@ -15,9 +15,7 @@ interface ItemsRegistryInterface
 {
     public function add(ItemInterface $item): void;
 
-    public function hasCraftable(string $name): bool;
+    public function getNewItem(string $alias): ItemInterface;
 
-    public function hasMineable(string $name): bool;
-
-    public function  hasProducable(string $name): bool;
+    public function getFinalParts() : array;
 }

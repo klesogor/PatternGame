@@ -8,9 +8,9 @@ use BinaryStudioAcademy\Game\Contracts\Commands\CommandInterface;
 
 interface CommandRegistryInterface
 {
-    public function add(CommandInterface $command,string $alias): void;
+    public function add(CommandInterface $command): void;
 
     public function get(string $alias) : CommandInterface ;
 
-    public function has(string $alias) : CommandInterface ;
+    public function getCommandList() : array;
 }

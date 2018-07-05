@@ -44,4 +44,10 @@ class CraftingSchema implements CraftingSchemaInterface
     {
         return $this->alias;
     }
+
+    public function getSchema(): string
+    {
+        $components = implode('|',$this->components);
+        return "{$this->alias} => {$components}";
+    }
 }

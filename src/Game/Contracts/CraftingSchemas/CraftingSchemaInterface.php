@@ -18,4 +18,6 @@ interface CraftingSchemaInterface
     public function missingResources(): array;
 
     public function getAlias():string;
+
+    public function getSchema():string ;
 }

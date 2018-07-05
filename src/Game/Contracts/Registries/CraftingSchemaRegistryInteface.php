@@ -6,12 +6,12 @@
  * Time: 13:04
  */
 
-namespace BinaryStudioAcademy\Game\Contracts\Registries;
+namespace BinaryStudioAcademy\Game\Registries;
 
 
 use BinaryStudioAcademy\Game\Contracts\CraftingSchemas\CraftingSchemaInterface;
 
-interface CraftingSchemaRegistry
+interface CraftingSchemaRegistryInteface
 {
     public function addSchema(CraftingSchemaInterface $schema);
 
