@@ -16,4 +16,6 @@ interface CraftingSchemaInterface
     public function canCraft(StorageInterface $storage): bool;
 
     public function missingResources(): array;
+
+    public function getAlias():string;
 }

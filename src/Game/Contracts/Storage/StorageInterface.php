@@ -13,7 +13,7 @@ use BinaryStudioAcademy\Game\Contracts\Items\ItemInterface;
 
 interface StorageInterface
 {
-    public function hasItem(string $alias): bool;
+    public function itemQuantity(string $alias): int; //returns how many items it has;
 
     public function takeItem(string $alias,int $quantity);
 
